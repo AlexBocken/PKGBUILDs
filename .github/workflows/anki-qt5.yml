@@ -1,0 +1,22 @@
+name: anki-qt5
+
+on:
+  push:
+    paths:
+      - '.github/workflows/anki-qt5.yml'
+      - 'pkginstall.sh'
+      - 'anki/**'
+      # Dependencies
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install anki-qt5
+        working-directory: anki-qt5
+        run: |
+          ../pkginstall.sh user=alex pkg=anki-qt5
