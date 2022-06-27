@@ -7,7 +7,7 @@ on:
       - 'pkginstall.sh'
       - 'anki/**'
       # Dependencies
- 
+
 
 jobs:
   test:
