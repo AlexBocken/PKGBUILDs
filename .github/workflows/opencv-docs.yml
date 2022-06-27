@@ -1,0 +1,22 @@
+name: opencv-docs
+
+on:
+  push:
+    paths:
+      - '.github/workflows/opencv-docs.yml'
+      - 'pkginstall.sh'
+      - 'opencv-docs/**'
+      # Dependencies
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install opencv-docs
+        working-directory: opencv-docs
+        run: |
+          ../pkginstall.sh user=alex pkg=opencv-docs
