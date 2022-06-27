@@ -1,0 +1,22 @@
+name: anki
+
+on:
+  push:
+    paths:
+      - '.github/workflows/anki.yml'
+      - 'pkginstall.sh'
+      - 'anki/**'
+      # Dependencies
+ 
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install anki
+        working-directory: anki
+        run: |
+          ../pkginstall.sh user=alex pkg=anki
