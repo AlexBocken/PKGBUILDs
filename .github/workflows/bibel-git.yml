@@ -1,0 +1,22 @@
+name: bibel-git
+
+on:
+  push:
+    paths:
+      - '.github/workflows/bibel-git.yml'
+      - 'pkginstall.sh'
+      - 'bibel-git/**'
+      # Dependencies
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install bibel-git
+        working-directory: bibel-git
+        run: |
+          ../pkginstall.sh user=alex pkg=bibel-git
