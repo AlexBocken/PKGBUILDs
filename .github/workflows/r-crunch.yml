@@ -1,0 +1,22 @@
+name: r-crunch
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r-crunch.yml'
+      - 'pkginstall.sh'
+      - 'r-crunch/**'
+      # Dependencies
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install r-crunch
+        working-directory: r-crunch
+        run: |
+          ../pkginstall.sh user=alex pkg=r-crunch

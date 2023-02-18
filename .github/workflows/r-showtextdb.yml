@@ -1,0 +1,22 @@
+name: r-showtextdb
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r-showtextdb.yml'
+      - 'pkginstall.sh'
+      - 'r-showtextdb/**'
+      # Dependencies
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install r-showtextdb
+        working-directory: r-showtextdb
+        run: |
+          ../pkginstall.sh user=alex pkg=r-showtextdb

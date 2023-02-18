@@ -1,0 +1,22 @@
+name: r-textutils
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r-textutils.yml'
+      - 'pkginstall.sh'
+      - 'r-textutils/**'
+      # Dependencies
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install r-textutils
+        working-directory: r-textutils
+        run: |
+          ../pkginstall.sh user=alex pkg=r-textutils

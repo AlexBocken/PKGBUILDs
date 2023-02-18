@@ -1,0 +1,22 @@
+name: showtext
+
+on:
+  push:
+    paths:
+      - '.github/workflows/showtext.yml'
+      - 'pkginstall.sh'
+      - 'showtext/**'
+      # Dependencies
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install showtext
+        working-directory: showtext
+        run: |
+          ../pkginstall.sh user=alex pkg=showtext

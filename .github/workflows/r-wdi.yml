@@ -1,0 +1,22 @@
+name: r-wdi
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r-wdi.yml'
+      - 'pkginstall.sh'
+      - 'r-wdi/**'
+      # Dependencies
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install r-wdi
+        working-directory: r-wdi
+        run: |
+          ../pkginstall.sh user=alex pkg=r-wdi
